@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include 'partials/dbconnect.php';
 
-    // $taskname = $_POST["t"];
     $time = $_POST["time"];
     $taskname = $_POST["t"];
     $uname = $_SESSION["username"];
@@ -67,6 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 500px;
             margin: 10px 10px;
         }
+
+        #display {
+            /* height: 100%;  */
+            overflow-y: scroll; 
+            /* background-color: #157347; */  
+            margin-top: 6rem; 
+            padding: 3rem 3rem;
+        }
     </style>
     <title>Task-Tune</title>
 </head>
@@ -86,11 +93,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
     <h6 class="display-6 heading text-center my-4"> Create a new Task </h6>
 
     <div class="container my-4">
-        <form action="/php/Task-Tune/create.php" method="post">
+        <!-- <form onsubmit="event.preventDefault();"> -->
+        <form action="/php/Task-Tune/create.php" method="POST">
 
             <div class="mb-3">
                 <label for="taskname" class="form-label">Task</label>
@@ -107,6 +114,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn btn-success">Add</button>
         </form>
     </div>
+
+
+    <!-- display -->
+
+
+    <?php
+    require 'partials/dbconnect.php';
+    $sql = "SELECT * FROM `ttdb`.`tasks` WHERE `username` = '" . $_SESSION['username'] . " '  ";
+
+    $res = mysqli_query($con, $sql);
+
+    $num = mysqli_num_rows($res);
+
+    if ($num > 0) {
+
+
+        echo '<div id="display" class="container">   
+        <h4>Tasks!!</h4>
+
+        <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Number </th>
+            <th scope="col">Tasks</th>
+            <th scope="col">Duration</th> 
+            <th scope="col"> User </th>  <tbody>';
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo '
+          <tr> 
+            <td> ' . $row['tid'] . '</td>
+            <td>' . $row['taskname'] . '</td>
+            <td>' . $row['time'] . '</td> 
+            <td>' . $row['username'] . '</td>
+          </tr>';
+        }
+
+        echo ' </tbody>
+      </table>
+        </div>';
+    }
+
+
+
+
+    // if ($num > 0) {
+    //     while () {
+    //         // echo $row['tid'] . " " . $row['taskname'] . "<br>"; 
+    //     }
+    // }
+
+    ?>
+
 </body>
+
 
 </html>

@@ -78,8 +78,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     <img src="https://source.unsplash.com/random/1920x1080/?books" class="card-img-top" alt="...">
                     <div class="card-body">
                         <?php echo '<h5 class="card-title">Do you want to add some overhead tasks? <span style="color:green;">' . $_SESSION['username'] . '</span> </h5>' ?>
-                        <p class="card-text">Add some overhead tasks and we'll generate best possible routine for you.  </p>
-                        <a href="#" class="btn btn-success">Add tasks</a>
+                        <p class="card-text">Add some overhead tasks and we'll generate best possible routine for you. </p>
+                        <a href="alter.php" class="btn btn-success">Add tasks</a>
                     </div>
                 </div>
             </div>

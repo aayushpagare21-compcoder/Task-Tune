@@ -22,7 +22,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/php/Task-Tune/create.php">Create new routine</a></li>
-              <li><a class="dropdown-item" href="/php/Task-Tune/alter.php">Generate new routine</a></li>
+              <li><a class="dropdown-item" href="/php/Task-Tune/x.php">Generate new routine</a></li>
             </ul>
           </li>
         </ul>

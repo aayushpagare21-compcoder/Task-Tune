@@ -41,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true; 
 
             //store username as well
-            $_SESSION['username'] = $username; 
+            $_SESSION['username'] = $username;  
+
+            // $_SESSION['duration'] = 0;
 
             //redirect to landing page
             header("location: welcome.php"); 
